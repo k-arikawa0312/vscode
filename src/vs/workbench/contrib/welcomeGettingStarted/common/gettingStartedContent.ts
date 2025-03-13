@@ -345,6 +345,12 @@ export const walkthroughs: GettingStartedWalkthroughContent = [
 					title: localize('gettingStarted.videoTutorial.title', "Watch video tutorials"),
 					description: localize('gettingStarted.videoTutorial.description.interpolated', "Watch the first in a series of short & practical video tutorials for VS Code's key features.\n{0}", Button(localize('watch', "Watch Tutorial"), 'https://aka.ms/vscode-getting-started-video')),
 					media: { type: 'svg', altText: 'VS Code Settings', path: 'learn.svg' },
+				},
+				{
+					id: 'useTemplates',
+					title: localize('gettingStarted.useTemplates.title', "Start with a template"),
+					description: localize('gettingStarted.useTemplates.description.interpolated', "Get a head start on your project with a template. VS Code provides a variety of templates to get you started.\n{0}", Button(localize('browseTemplates', "Browse Templates"), 'command:workbench.action.showAllStartupEntries')),
+					media: { type: 'svg', altText: 'VS Code Settings', path: 'learn.svg' },
 				}
 			]
 		}
