@@ -207,6 +207,16 @@ export const startEntries: GettingStartedStartEntryContent = [
 			command: 'command:workbench.action.remote.showWebStartEntryActions',
 		}
 	},
+	{
+		id: 'topLevelOpenTemplate',
+		title: localize('gettingStarted.topLevelOpenTemplate.title', "Open Template..."),
+		description: localize('gettingStarted.topLevelOpenTemplate.description', "Open a project template to start working"),
+		icon: Codicon.extensions,
+		content: {
+			type: 'startEntry',
+			command: 'command:workbench.action.showAllStartupEntries',
+		}
+	}
 ];
 
 const Button = (title: string, href: string) => `[${title}](${href})`;
@@ -346,6 +356,7 @@ export const walkthroughs: GettingStartedWalkthroughContent = [
 					description: localize('gettingStarted.videoTutorial.description.interpolated', "Watch the first in a series of short & practical video tutorials for VS Code's key features.\n{0}", Button(localize('watch', "Watch Tutorial"), 'https://aka.ms/vscode-getting-started-video')),
 					media: { type: 'svg', altText: 'VS Code Settings', path: 'learn.svg' },
 				},
+
 				{
 					id: 'useTemplates',
 					title: localize('gettingStarted.useTemplates.title', "Start with a template"),
