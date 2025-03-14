@@ -700,7 +700,7 @@ have to be updated for changes to the rules above, or to support more deeply nes
 	flex-wrap: wrap;
 	align-items: center;
 	gap: 4px;
-	width: 100%;
+	max-width: 100%;
 }
 
 .chat-related-files .monaco-button-dropdown .monaco-text-button {
@@ -725,8 +725,8 @@ have to be updated for changes to the rules above, or to support more deeply nes
 	border-style: dashed;
 	align-items: center;
 	overflow: hidden;
-	padding: 0 0 0 2px;
 	gap: 2px;
+	padding: 0 4px;
 }
 
 .chat-related-files .monaco-button.codicon.codicon-add {
@@ -734,9 +734,11 @@ have to be updated for changes to the rules above, or to support more deeply nes
 	flex-direction: column;
 	color: var(--vscode-descriptionForeground);
 	padding-top: 3px;
+	margin-left: -4px;
+	padding-left: 4px;
 	font-size: 14px; /* The + codicon is large, make it look more like the x codicon */
 	height: calc(100% - 3px);
-	width: 20px;
+	width: 17px;
 	outline-offset: -2px !important;
 }
 
@@ -1113,12 +1115,20 @@ have to be updated for changes to the rules above, or to support more deeply nes
 	padding: 8px 0 0 0
 }
 
+.chat-attachment-toolbar .action-item:not(:last-child) {
+	margin-right: 4px;
+}
+
 .action-item.chat-attached-context-attachment.chat-add-files {
 	height: 20px;
-	gap: 0px;
 	color: var(--vscode-descriptionForeground);
 }
 
+.action-item.chat-attached-context-attachment.chat-add-files span.keybinding {
+	display: none;
+}
+
+.action-item.chat-mcp .action-label,
 .action-item.chat-attached-context-attachment.chat-add-files .action-label,
 .interactive-session .chat-attached-context .chat-attached-context-attachment {
 	display: flex;
@@ -1132,10 +1142,11 @@ have to be updated for changes to the rules above, or to support more deeply nes
 	max-width: 100%;
 	width: fit-content;
 }
-
+.action-item.chat-mcp .action-label,
 .action-item.chat-attached-context-attachment.chat-add-files .action-label {
 	color: var(--vscode-descriptionForeground);
 	font-family: unset;
+	gap: 5px;
 }
 
 .action-item.chat-attached-context-attachment.chat-add-files .action-label.codicon::before {
@@ -1193,7 +1204,7 @@ have to be updated for changes to the rules above, or to support more deeply nes
 	flex-wrap: wrap;
 	cursor: default;
 	gap: 4px;
-	width: 100%;
+	max-width: 100%;
 }
 
 .interactive-session .interactive-input-part.compact .chat-attached-context {
@@ -1245,11 +1256,11 @@ have to be updated for changes to the rules above, or to support more deeply nes
 }
 
 .interactive-session .chat-attached-context .chat-attached-context-attachment .monaco-icon-label {
-	gap: 3px;
+	gap: 4px;
 }
 
 .interactive-session .chat-attached-context .chat-attached-context-attachment .monaco-icon-label::before {
-	height: 90%;
+	height: 1em;
 	width: auto;
 	padding: 0;
 	line-height: 1em !important;

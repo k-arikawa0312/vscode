@@ -19,7 +19,7 @@ import { FuzzyScore } from '../../../../base/common/filters.js';
 import { MarkdownString } from '../../../../base/common/htmlContent.js';
 import { Iterable } from '../../../../base/common/iterator.js';
 import { KeyCode } from '../../../../base/common/keyCodes.js';
-import { Disposable, DisposableStore, IDisposable, dispose, toDisposable } from '../../../../base/common/lifecycle.js';
+import { Disposable, DisposableStore, IDisposable, dispose, thenIfNotDisposed, toDisposable } from '../../../../base/common/lifecycle.js';
 import { ResourceMap } from '../../../../base/common/map.js';
 import { FileAccess } from '../../../../base/common/network.js';
 import { clamp } from '../../../../base/common/numbers.js';
@@ -898,12 +898,11 @@ export class ChatListItemRenderer extends Disposable implements ITreeRenderer<Ch
 			return this.renderUndoStop(content);
 		}
 
-		// todo@connor4312/roblourens: should this throw or renderNoContent to avoid progressive render thrashing?
-		return undefined;
+		return this.renderNoContent(other => content.kind === other.kind);
 	}
 
 	private renderUndoStop(content: IChatUndoStop) {
-		return this.renderNoContent(other => other.kind === 'undoStop' && other.id === content.id);
+		return this.renderNoContent(other => other.kind === content.kind && other.id === content.id);
 	}
 
 	private renderNoContent(equals: (otherContent: IChatRendererContent) => boolean): IChatContentPart {
@@ -986,7 +985,7 @@ export class ChatListItemRenderer extends Disposable implements ITreeRenderer<Ch
 
 		part.codeblocks?.forEach((info, i) => {
 			codeBlocksByResponseId[codeBlockStartIndex + i] = info;
-			info.uriPromise.then(uri => {
+			part.addDisposable!(thenIfNotDisposed(info.uriPromise, uri => {
 				if (!uri) {
 					return;
 				}
@@ -998,7 +997,7 @@ export class ChatListItemRenderer extends Disposable implements ITreeRenderer<Ch
 						this.codeBlocksByEditorUri.delete(uri);
 					}
 				}));
-			});
+			}));
 		});
 
 	}

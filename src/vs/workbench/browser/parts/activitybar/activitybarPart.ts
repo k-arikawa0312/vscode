@@ -2,7 +2,7 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-
+//aaS
 import './media/activitybarpart.css';
 import './media/activityaction.css';
 import { localize, localize2 } from '../../../../nls.js';
@@ -280,8 +280,7 @@ export class ActivityBarCompositeBar extends PaneCompositeBar {
 			return; // prevent menu bar from installing twice #110720
 		}
 
-		this.menuBarContainer = document.createElement('div');
-		this.menuBarContainer.classList.add('menubar');
+		this.menuBarContainer = $('.menubar');
 
 		const content = assertIsDefined(this.element);
 		content.prepend(this.menuBarContainer);
